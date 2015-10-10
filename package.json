@@ -4,8 +4,10 @@
   "description": "Decorator your cakes like a pro. ES7 Decorators.",
   "main": "lib/cake.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/webpack -dw"
+    "dev": "NODE_ENV=development ./node_modules/.bin/webpack -dw --config config/webpack.js",
+    "test": "karma start config/karma.js --single-run",
+    "test:watch": "karma start config/karma.js",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config config/webpack.js"
   },
   "author": "Solomon Hawk <solomon.hawk@viget.com> (http://viget.com/)",
   "license": "ISC",
