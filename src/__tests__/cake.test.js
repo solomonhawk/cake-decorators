@@ -100,13 +100,13 @@ describe('cake', function() {
   })
 
   describe('cache', function() {
-    let { cacheSync, localStorageDriver:ls } = cake
+    let { cache, localStorageDriver:ls } = cake
 
     it('caches function calls with the same key', function() {
       let mock = sinon.mock()
 
       let foo = {
-        @cacheSync(ls, ({ slug }) => slug)
+        @cache(ls, ({ slug }) => slug)
         expensiveFunction({ slug }) {
           // ... expensive ...
           mock()
