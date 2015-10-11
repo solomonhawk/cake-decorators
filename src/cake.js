@@ -97,14 +97,14 @@ export function cache({ get, set }, getKey=identity) {
   return function (target, name, descriptor) {
     let fn = descriptor.value
 
-    descriptor.value = function cachedDecoratedMethod(params) {
-      let key    = getKey(params)
+    descriptor.value = function cachedDecoratedMethod(...params) {
+      let key    = getKey(...params)
       let cached = get(key)
 
       if (cached) {
         return cached
       } else {
-        let result = fn.call(target, params)
+        let result = fn.apply(target, params)
         set(key, result)
         return result
       }
