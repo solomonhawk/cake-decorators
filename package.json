@@ -2,7 +2,7 @@
   "name": "cake-decorators",
   "version": "0.1.1",
   "description": "Delicious ES7 decorators. Decorate your cakes like a pro.",
-  "main": "lib/cake.min.js",
+  "main": "lib/cake-decorators.min.js",
   "scripts": {
     "dev": "NODE_ENV=development ./node_modules/.bin/webpack -dw --config config/webpack.js",
     "test": "karma start config/karma.js --single-run",
@@ -36,6 +36,7 @@
     "webpack": "^1.12.2"
   },
   "babel": {
-    "stage": "0"
+    "stage": "0",
+    "loose": ["es6.modules", "es6.classes"]
   }
 }
