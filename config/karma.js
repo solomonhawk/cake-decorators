@@ -19,7 +19,7 @@ module.exports = function (config) {
       noInfo: true
     },
 
-    browsers: process.env.CIRCLECI ? [ 'Firefox', 'Chrome' ] : [ 'Chrome' ],
+    browsers: [ 'Firefox', 'Chrome' ],
 
     plugins: [
       require('karma-mocha'),
