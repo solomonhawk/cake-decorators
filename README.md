@@ -20,6 +20,7 @@ class FooFetcher {
         return 'bar'
     }
 }
+a
 
 let fetcher = new FooFetcher()
 
