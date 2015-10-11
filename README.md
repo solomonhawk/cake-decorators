@@ -1,4 +1,4 @@
-Cake
+Cake ![Build Status](https://circleci.com/gh/solomonhawk/cake-decorators.png?style=shield&circle-token=0a4187fbf80068ccf6b7d542ee87e56755c05910)
 ====
 Delicious ES7 decorators.
 
