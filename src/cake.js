@@ -2,12 +2,9 @@
  * Cake - Recipes for configurable decorators
  **/
 
-/** utility **/
 export function identity(value) {
   return value
 }
-
-/** class property decorators **/
 
 /**
  * @function enumerable
@@ -16,7 +13,7 @@ export function identity(value) {
  * @return { DecoratorFunction }
  **/
 export function enumerable(value) {
-  return function (target, key, descriptor) {
+  return function (target, name, descriptor) {
      descriptor.enumerable = value
      return descriptor
   }
@@ -29,7 +26,7 @@ export function enumerable(value) {
  * @return { DecoratorFunction }
  **/
 export function configurable(value) {
-  return function (target, key, descriptor) {
+  return function (target, name, descriptor) {
      descriptor.configurable = value
      return descriptor
   }
@@ -61,11 +58,12 @@ let memoized = new WeakMap()
  * @return { Void }
  **/
 export function memoize(target, name, descriptor) {
-  let getter = descriptor.get, setter = descriptor.set
+  let getter = descriptor.get
+  let setter = descriptor.set
 
   descriptor.get = function() {
     let table = memoizationFor(this)
-    if (name in table) { return table[name] }
+    if (name in table) return table[name]
     return table[name] = getter.call(this)
   }
 
@@ -90,13 +88,12 @@ function memoizationFor(obj) {
 
 /**
  * @function cache
- * @source https://github.com/wycats/javascript-decorators
  * @type decorator
  * @param { Object } driver - format is { get: Function, set: Function }
  * @param { Function } getKey - method that returns the unique identifier
  * @return { DescriptorFunction }
  **/
-export function cacheSync({ get, set }, getKey) {
+export function cache({ get, set }, getKey=identity) {
   return function (target, name, descriptor) {
     let fn = descriptor.value
 
@@ -118,14 +115,13 @@ export function cacheSync({ get, set }, getKey) {
 }
 
 /**
- * @function cache
- * @source https://github.com/wycats/javascript-decorators
+ * @function cacheAsync
  * @type decorator
  * @param { Object } driver - format is { get: Function, set: Function }
  * @param { Function } getKey - method that returns the unique identifier
  * @return { DescriptorFunction }
  **/
-export function cache({ get, set }, getKey=identity) {
+export function cacheAsync({ get, set }, getKey=identity) {
   return function (target, name, descriptor) {
     let fn = descriptor.value
 

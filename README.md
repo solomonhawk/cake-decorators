@@ -1,16 +1,17 @@
 Cake
 ====
-
 Delicious ES7 decorators.
+
+### [WIP] - Still Baking..
 
 # Brief Example
 
 ```js
 // ES6/7
-import { cacheSync, localStorageDriver:ls } from 'cake-decorators'
+import { cache, localStorageDriver:ls } from 'cake-decorators'
 
 class FooFetcher {
-    @cacheSync(ls)
+    @cache(ls)
     fetch(id) {
         // expensive operation
         // ...
